@@ -135,6 +135,19 @@ const deleteContact = asyncHandler(async (req, res) => {
   res.status(200).json(getContact);
 });
 
+
+const getDatabyPhoneno = asyncHandler(async (req, res) => {
+  console.log(req);
+  // const query = { email: email };
+  const phone = req.params.phone;
+  const getContact = await Contact.find({phone});
+  if (!getContact) {
+    res.status(400);
+    throw new Error("Contact not Found");
+  }
+  res.status(200).json(getContact);
+});
+
 const getListByIntern = asyncHandler(async (req, res) => {
   const intern = req.params.intern;
   const getContact = await Contact.find({ intern });
@@ -156,4 +169,5 @@ module.exports = {
   getContact,
   deleteContact,
   getListByIntern,
+  getDatabyPhoneno
 };
