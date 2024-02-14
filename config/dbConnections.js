@@ -7,7 +7,7 @@ const connectDb = async () => {
       }
 
     try {
-        const connect = await mongoose.connect(process.env.CONNECTION_STRING,connectionpOptions);
+        const connect = await mongoose.connect("mongodb+srv://pratiktakte:Pratik%402855@cluster0.fenzthg.mongodb.net/contacts?retryWrites=true&w=majority",connectionpOptions);
         console.log("database connected",connect.connection.host, connect.connection.name)
     } catch (err) {
         console.log(err);
